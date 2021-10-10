@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+
 import bean.Place;
 import util.InputUtil;
 
@@ -62,6 +64,7 @@ public class PlaceManagement {
 			System.out.println("3 - Tim Kiem Dia Diem");
 			System.out.println("4 - Chinh Sua Dia Diem");
 			System.out.println("5 - Xoa Dia Diem");
+			System.out.println("6 - Luu Thong Tin");
 			System.out.println("######################################");
 			System.out.print("Moi ban chon chuc nang:");
 			functionPlace = InputUtil.getInt();
@@ -69,6 +72,16 @@ public class PlaceManagement {
 				PlaceManagement.showPlaces(places);
 			} else if(functionPlace == 3) {
 				PlaceManagement.searchPlace(places);
+			} else if(functionPlace == 6) {
+				StringBuilder str = new StringBuilder();
+				for(int i = 0; i < places.length; i++) {
+					str.append(places[i].getId()).append(";").append(places[i].getPlaceName()).append(";").append(places[i].getDescription());
+					if(i < places.length-1) {
+						str.append("\n");
+					}
+				}
+				InputUtil.write(str.toString(), new File("Places.data"));
+				System.out.println("Done!");
 			}
 		}
 		

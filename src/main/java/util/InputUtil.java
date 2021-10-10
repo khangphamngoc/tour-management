@@ -1,5 +1,10 @@
 package util;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner; // Su dung thu vien Scanner trong package java.util
+
+import org.apache.commons.io.FileUtils;
  /**
   * Class input utilities
   */
@@ -47,6 +52,23 @@ public class InputUtil {
             e.printStackTrace();
         }
         return out;
+    }
+    
+    public static void write(String input, File f) {
+    	try {
+			FileUtils.write(f, input, "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    public static List<String> read(File f) {
+    	try {
+			return FileUtils.readLines(f);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	return null;
     }
 
 }
